@@ -1,0 +1,6 @@
+apiVersion: v2
+name: api-service
+version: 0.1.0
+appVersion: 2.0.0
+description: REST API backend service
+type: application

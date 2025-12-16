@@ -1,0 +1,39 @@
+affinity: {}
+autoscaling:
+    enabled: false
+    maxReplicas: 10
+    minReplicas: 1
+    targetCPUUtilizationPercentage: 80
+fullnameOverride: ""
+image:
+    pullPolicy: IfNotPresent
+    repository: gcr.io/my-project/api
+    tag: v2.1.0
+imagePullSecrets: []
+ingress:
+    annotations: {}
+    className: ""
+    enabled: false
+    hosts: []
+    tls: []
+nameOverride: ""
+nodeSelector: {}
+podAnnotations: {}
+podSecurityContext: {}
+replicaCount: 2
+resources:
+    limits:
+        cpu: 100m
+        memory: 128Mi
+    requests:
+        cpu: 50m
+        memory: 64Mi
+securityContext: {}
+service:
+    port: 3000
+    type: ClusterIP
+serviceAccount:
+    annotations: {}
+    create: true
+    name: ""
+tolerations: []
