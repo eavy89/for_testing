@@ -6,10 +6,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import Index from "./pages/Index";
 import SmartHands from "./pages/SmartHands";
+import E2ETestPage from "./pages/E2ETestPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+/**
+ * Main App Component
+ * 
+ * Updated by MCP Gateway Agent during E2E Test #4
+ * Added route: /e2e-test
+ */
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -20,6 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/smart-hands" element={<SmartHands />} />
+          <Route path="/e2e-test" element={<E2ETestPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
