@@ -1,0 +1,147 @@
+schema:
+    name: altan-manifest
+    version: 1
+provenance:
+    created_by:
+        actor: tool
+        name: project.manifest.ensure
+        version: 0.1.0
+    created_at: 2025-12-31T07:39:27.608994576Z
+    last_updated_by:
+        actor: tool
+        name: project.manifest.ensure
+        version: 0.1.0
+    last_updated_at: 2025-12-31T07:39:27.608994576Z
+repo:
+    vcs: git
+    default_branch: main
+    fingerprint:
+        head_commit: 0cf10856bf578942437d94c74faccf27e29e6d1c
+        dirty: true
+        content_hash: 6cfe82c510123c77635f6ae381cfc45356bdfb50029cd98a2c1a3e70daabbf29
+    layout:
+        type: auto
+        root: .
+        ignore:
+            - .git/**
+            - node_modules/**
+            - '**/.venv/**'
+            - dist/**
+            - build/**
+execution_defaults:
+    cwd: .
+    env:
+        CI: "true"
+    timeout_seconds: 900
+    shell: false
+    network: auto
+    sandbox:
+        filesystem: readwrite
+    output:
+        capture: true
+        max_bytes: 2000000
+toolchains:
+    - node
+workspaces:
+    - id: root
+      path: .
+      type: auto
+      fingerprint_inputs:
+        - package.json
+      metadata:
+        name: for_testing
+        description: for_testing project
+      tasks:
+        build:
+            enabled: true
+            description: Build Node.js project
+            cmd:
+                - pnpm
+                - run
+                - build
+            allow_fail: false
+            outputs:
+                - dist/**
+                - build/**
+            requires:
+                toolchains:
+                    - node
+        install:
+            enabled: true
+            description: Install Node.js dependencies
+            cmd:
+                - pnpm
+                - install
+                - --frozen-lockfile
+            allow_fail: false
+            inputs:
+                - package.json
+                - package-lock.json
+                - pnpm-lock.yaml
+                - yarn.lock
+            outputs:
+                - node_modules/**
+            requires:
+                toolchains:
+                    - node
+        lint:
+            enabled: true
+            description: Lint Node.js code
+            cmd:
+                - pnpm
+                - run
+                - lint
+            allow_fail: true
+            requires:
+                toolchains:
+                    - node
+analysis:
+    detected:
+        languages:
+            - name: javascript
+              confidence: 0.9
+            - name: typescript
+              confidence: 0.9
+            - name: html
+              confidence: 0.025
+            - name: css
+              confidence: 0.05
+            - name: json
+              confidence: 0.075
+            - name: yaml
+              confidence: 0.03
+            - name: markdown
+              confidence: 0.010000000000000002
+        frameworks:
+            - name: react
+              confidence: 0.9
+        package_files:
+            - package.json
+            - pnpm-lock.yaml
+    decisions:
+        notes:
+            - Detected 7 language(s)
+            - Detected 1 framework(s)
+            - Found 2 package file(s)
+        confidence: 0.5837142857142857
+policy:
+    allowed_tasks:
+        - install
+        - lint
+        - test
+        - build
+        - typecheck
+        - format
+        - clean
+        - dev
+        - start
+        - deploy
+        - setup
+        - plan
+        - apply
+        - validate
+    disallowed_commands:
+        - rm -rf /
+    require_argv: true
+    max_timeout_seconds: 1800
+    default_network: auto
