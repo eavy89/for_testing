@@ -71,3 +71,7 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.altan.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+## Testing with Opencode
+
+This repository is used for testing Opencode functionality. Opencode is an interactive CLI tool that helps with software engineering tasks.
