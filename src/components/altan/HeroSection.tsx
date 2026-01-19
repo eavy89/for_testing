@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { FloatingParticles } from "@/components/ui/floating-particles";
 
 export const HeroSection: React.FC = () => {
   return (
@@ -10,6 +11,9 @@ export const HeroSection: React.FC = () => {
         <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse-glow" />
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
       </div>
+
+      {/* Floating particles */}
+      <FloatingParticles count={30} />
 
       {/* Content */}
       <div className="container relative z-10 px-6 lg:px-8 py-32">
